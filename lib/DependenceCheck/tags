@@ -1,0 +1,48 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+A	test/non_local.c	/^int A;$/;"	v
+CC	test/Makefile	/^CC = $(LLVM_PATH)\/bin\/clang$/;"	m
+CXX	test/Makefile	/^CXX = $(LLVM_PATH)\/bin\/clang++$/;"	m
+Clobber	DependenceCheck.cpp	/^      Clobber = 0,$/;"	e	enum:__anon1::DependenceCheck::DepType	file:
+ControlDependence	ControlDependence.hpp	/^class ControlDependence {$/;"	c
+Def	DependenceCheck.cpp	/^      Def = 1,$/;"	e	enum:__anon1::DependenceCheck::DepType	file:
+DepInfo	DependenceCheck.cpp	/^    struct DepInfo {$/;"	s	struct:__anon1::DependenceCheck	file:
+DepInfo	DependenceCheck.cpp	/^  DependenceCheck::DepInfo::DepInfo() {$/;"	f	class:__anon1::DependenceCheck::DepInfo
+DepInfo	DependenceCheck.cpp	/^  DependenceCheck::DepInfo::DepInfo(Instruction *i, DepType d) {$/;"	f	class:__anon1::DependenceCheck::DepInfo
+DepInst_	DependenceCheck.cpp	/^      Instruction *DepInst_; \/\/ inst that is depended on$/;"	m	struct:__anon1::DependenceCheck::DepInfo	file:
+DepType	DependenceCheck.cpp	/^    enum DepType {$/;"	g	struct:__anon1::DependenceCheck	file:
+DependenceCheck	DependenceCheck.cpp	/^  DependenceCheck::DependenceCheck() : ModulePass(ID) { $/;"	f	class:__anon1::DependenceCheck
+DependenceCheck	DependenceCheck.cpp	/^  struct DependenceCheck : public ModulePass {$/;"	s	namespace:__anon1	file:
+Deps_	DependenceCheck.cpp	/^    std::map<Instruction *, DepInfo> Deps_;$/;"	m	struct:__anon1::DependenceCheck	file:
+ID	DependenceCheck.cpp	/^    static char ID; \/\/ pass ID$/;"	m	struct:__anon1::DependenceCheck	file:
+ID	DependenceCheck.cpp	/^char DependenceCheck::ID = 0;$/;"	m	class:DependenceCheck	file:
+Invalid	DependenceCheck.cpp	/^      Invalid = 99 \/\/ represents an invalid dep info$/;"	e	enum:__anon1::DependenceCheck::DepType	file:
+LEVEL	Makefile	/^LEVEL=..\/..$/;"	m
+LIBRARYNAME	Makefile	/^LIBRARYNAME=DependenceCheck$/;"	m
+LLVMAS	test/Makefile	/^LLVMAS = $(LLVM_PATH)\/bin\/llvm-as$/;"	m
+LLVMDIS	test/Makefile	/^LLVMDIS = $(LLVM_PATH)\/bin\/llvm-dis$/;"	m
+LLVM_PATH	test/Makefile	/^LLVM_PATH = \/home\/markus\/src\/install-3.2$/;"	m
+LOADABLE_MODULE	Makefile	/^LOADABLE_MODULE = 1$/;"	m
+MK_DEBUG	DependenceCheck.cpp	23;"	d	file:
+NonFuncLocal	DependenceCheck.cpp	/^      NonFuncLocal = 2,$/;"	e	enum:__anon1::DependenceCheck::DepType	file:
+NonLocal	DependenceCheck.cpp	/^      NonLocal = 3,$/;"	e	enum:__anon1::DependenceCheck::DepType	file:
+NonLocalDeps_	DependenceCheck.cpp	/^    std::map<Instruction *, std::vector<NonLocalDepResult> > NonLocalDeps_;$/;"	m	struct:__anon1::DependenceCheck	file:
+OPT	test/Makefile	/^OPT = $(LLVM_PATH)\/bin\/opt$/;"	m
+Type_	DependenceCheck.cpp	/^      DepType Type_;$/;"	m	struct:__anon1::DependenceCheck::DepInfo	file:
+Unknown	DependenceCheck.cpp	/^      Unknown = 4,$/;"	e	enum:__anon1::DependenceCheck::DepType	file:
+depTypeToString	DependenceCheck.cpp	/^  const char *DependenceCheck::depTypeToString(DepType d) {$/;"	f	class:__anon1::DependenceCheck
+func1	test/non_local.c	/^void func1(void) {$/;"	f
+func2	test/non_local.c	/^void func2(void) {$/;"	f
+getAnalysisUsage	DependenceCheck.cpp	/^  void DependenceCheck::getAnalysisUsage(AnalysisUsage &AU) const {$/;"	f	class:__anon1::DependenceCheck
+getDataDependencies	DependenceCheck.cpp	/^  void DependenceCheck::getDataDependencies(Module &M) {$/;"	f	class:__anon1::DependenceCheck
+getDepInfo	DependenceCheck.cpp	/^  DependenceCheck::DepInfo DependenceCheck::getDepInfo(MemDepResult dep) {$/;"	f	class:__anon1::DependenceCheck
+main	test/non_local.c	/^int main(int argc, char *argv[]) {$/;"	f
+main	test/simple.c	/^int main(int argc, char *argv[]) {$/;"	f
+print	DependenceCheck.cpp	/^  void DependenceCheck::print(raw_ostream &OS, const Module *m) const {$/;"	f	class:__anon1::DependenceCheck
+processDepResult	DependenceCheck.cpp	/^  void DependenceCheck::processDepResult(Instruction *inst, $/;"	f	class:__anon1::DependenceCheck
+runOnModule	DependenceCheck.cpp	/^  bool DependenceCheck::runOnModule(Module &M) {$/;"	f	class:__anon1::DependenceCheck
+valid	DependenceCheck.cpp	/^  bool DependenceCheck::DepInfo::valid() {$/;"	f	class:__anon1::DependenceCheck::DepInfo

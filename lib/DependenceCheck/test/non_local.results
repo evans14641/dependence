@@ -1,0 +1,45 @@
+Printing analysis 'Basic Alias Analysis (stateless AA impl)':
+Pass::print not implemented for pass: 'Basic Alias Analysis (stateless AA impl)'!
+Printing analysis 'Memory Dependence Analysis' for function 'func1':
+Pass::print not implemented for pass: 'Memory Dependence Analysis'!
+Printing analysis 'Memory Dependence Analysis' for function 'func2':
+Pass::print not implemented for pass: 'Memory Dependence Analysis'!
+Printing analysis 'Memory Dependence Analysis' for function 'main':
+Pass::print not implemented for pass: 'Memory Dependence Analysis'!
+Printing analysis 'check control and data dependencies of instructions':
+Local Dependence map size: 8
+Instruction:   store i32 3, i32* @A, align 4
+    has dependence
+    with instruction printing a <null> value
+
+    of type NonFuncLocal
+Instruction:   store i32 0, i32* %retval
+    has dependence
+    with instruction   %argv.addr = alloca i8**, align 8
+    of type Clobber
+Instruction:   store i32 %argc, i32* %argc.addr, align 4
+    has dependence
+    with instruction   store i32 0, i32* %retval
+    of type Clobber
+Instruction:   store i8** %argv, i8*** %argv.addr, align 8
+    has dependence
+    with instruction   store i32 %argc, i32* %argc.addr, align 4
+    of type Clobber
+Instruction:   store i32 0, i32* @A, align 4
+    has dependence
+    with instruction   store i8** %argv, i8*** %argv.addr, align 8
+    of type Clobber
+Instruction:   store i32 2, i32* @A, align 4
+    has dependence
+    with instruction printing a <null> value
+
+    of type NonFuncLocal
+Instruction:   call void @func1()
+    has dependence
+    with instruction   store i32 0, i32* @A, align 4
+    of type Clobber
+Instruction:   call void @func2()
+    has dependence
+    with instruction   call void @func1()
+    of type Clobber
+Non-Local Dependence map size: 0

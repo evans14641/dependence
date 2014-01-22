@@ -1,0 +1,149 @@
+Printing analysis 'Basic Alias Analysis (stateless AA impl)':
+Pass::print not implemented for pass: 'Basic Alias Analysis (stateless AA impl)'!
+Printing analysis 'Memory Dependence Analysis' for function 'main':
+Pass::print not implemented for pass: 'Memory Dependence Analysis'!
+Printing analysis 'check control and data dependencies of instructions':
+Local Dependence map size: 15
+Instruction:   store i32 0, i32* %retval
+    has dependence
+    with instruction   %cleanup.dest.slot = alloca i32
+    of type Clobber
+Instruction:   store i32 %argc, i32* %argc.addr, align 4
+    has dependence
+    with instruction   store i32 0, i32* %retval
+    of type Clobber
+Instruction:   store i32 4, i32* %arrayidx2, align 4
+    has dependence
+    with instruction   %7 = load i32* %i, align 4
+    of type Def
+Instruction:   store i8** %argv, i8*** %argv.addr, align 8
+    has dependence
+    with instruction   store i32 %argc, i32* %argc.addr, align 4
+    of type Clobber
+Instruction:   store i32 3, i32* %n, align 4
+    has dependence
+    with instruction   store i8** %argv, i8*** %argv.addr, align 8
+    of type Clobber
+Instruction:   %0 = load i32* %n, align 4
+    has dependence
+    with instruction   store i32 3, i32* %n, align 4
+    of type Clobber
+Instruction:   %2 = call i8* @llvm.stacksave()
+    has dependence
+    with instruction   %0 = load i32* %n, align 4
+    of type Clobber
+Instruction:   store i8* %2, i8** %saved_stack
+    has dependence
+    with instruction   %2 = call i8* @llvm.stacksave()
+    of type Clobber
+Instruction:   store i32 0, i32* %i, align 4
+    has dependence
+    with instruction   %vla = alloca i32, i64 %1, align 16
+    of type Clobber
+Instruction:   store i32 3, i32* %arrayidx, align 4
+    has dependence
+    with instruction   %6 = load i32* %i, align 4
+    of type Def
+Instruction:   store i32 %inc, i32* %i, align 4
+    has dependence
+    with instruction   %8 = load i32* %i, align 4
+    of type Def
+Instruction:   store i32 1, i32* %cleanup.dest.slot
+    has dependence
+    with instruction   store i32 0, i32* %retval
+    of type Clobber
+Instruction:   %9 = load i8** %saved_stack
+    has dependence
+    with instruction   store i32 1, i32* %cleanup.dest.slot
+    of type Clobber
+Instruction:   call void @llvm.stackrestore(i8* %9)
+    has dependence
+    with instruction   %9 = load i8** %saved_stack
+    of type Clobber
+Instruction:   %10 = load i32* %retval
+    has dependence
+    with instruction   call void @llvm.stackrestore(i8* %9)
+    of type Clobber
+Non-Local Dependence map size: 7
+Instruction:   %8 = load i32* %i, align 4
+    has non local dependence(s) with:
+    Address:   %i = alloca i32, align 4
+    Address:   %i = alloca i32, align 4
+Instruction:   %3 = load i32* %i, align 4
+    has non local dependence(s) with:
+    Address:   %i = alloca i32, align 4
+    Address:   %i = alloca i32, align 4
+Instruction:   %4 = load i32* %n, align 4
+    has non local dependence(s) with:
+    Address:   %n = alloca i32, align 4
+    Address:   %n = alloca i32, align 4
+Instruction:   %5 = load i32* %argc.addr, align 4
+    has non local dependence(s) with:
+    Address:   %argc.addr = alloca i32, align 4
+    Address:   %argc.addr = alloca i32, align 4
+Instruction:   %6 = load i32* %i, align 4
+    has non local dependence(s) with:
+    Address:   %i = alloca i32, align 4
+    Address:   %i = alloca i32, align 4
+Instruction:   %7 = load i32* %i, align 4
+    has non local dependence(s) with:
+    Address:   %i = alloca i32, align 4
+    Address:   %i = alloca i32, align 4
+Instruction:   store i32 0, i32* %retval
+    has non local dependence(s) with:
+    Address:   %retval = alloca i32, align 4, !clap !0
+BasicBlock: 
+for.cond:                                         ; preds = %for.inc, %entry
+  %3 = load i32* %i, align 4
+  %4 = load i32* %n, align 4
+  %cmp = icmp slt i32 %3, %4
+  br i1 %cmp, label %for.body, label %for.end
+Is dependent on:
+
+for.cond:                                         ; preds = %for.inc, %entry
+  %3 = load i32* %i, align 4
+  %4 = load i32* %n, align 4
+  %cmp = icmp slt i32 %3, %4
+  br i1 %cmp, label %for.body, label %for.end
+
+
+for.body:                                         ; preds = %for.cond
+  %5 = load i32* %argc.addr, align 4
+  %rem = srem i32 %5, 2
+  %tobool = icmp ne i32 %rem, 0
+  br i1 %tobool, label %if.then, label %if.else
+
+
+if.end:                                           ; preds = %if.else, %if.then
+  br label %for.inc
+
+
+for.inc:                                          ; preds = %if.end
+  %8 = load i32* %i, align 4
+  %inc = add nsw i32 %8, 1
+  store i32 %inc, i32* %i, align 4
+  br label %for.cond
+
+BasicBlock: 
+for.body:                                         ; preds = %for.cond
+  %5 = load i32* %argc.addr, align 4
+  %rem = srem i32 %5, 2
+  %tobool = icmp ne i32 %rem, 0
+  br i1 %tobool, label %if.then, label %if.else
+Is dependent on:
+
+if.then:                                          ; preds = %for.body
+  %6 = load i32* %i, align 4
+  %idxprom = sext i32 %6 to i64
+  %arrayidx = getelementptr inbounds i32* %vla, i64 %idxprom
+  store i32 3, i32* %arrayidx, align 4
+  br label %if.end
+
+
+if.else:                                          ; preds = %for.body
+  %7 = load i32* %i, align 4
+  %idxprom1 = sext i32 %7 to i64
+  %arrayidx2 = getelementptr inbounds i32* %vla, i64 %idxprom1
+  store i32 4, i32* %arrayidx2, align 4
+  br label %if.end
+
